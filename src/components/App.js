@@ -9,29 +9,15 @@ const colors = [
 ];
 
 const App = () => {
-  const [selectedColor, setSelectedColor] = useState(""); // Holds the currently selected color
-  const [boxColors, setBoxColors] = useState(["", "", ""]); // Holds colors for each box
-
-  // Function to update the color of a specific box
-  const handleBoxClick = (index) => {
-    if (!selectedColor) return; // If no color is selected, do nothing
-
-    const newBoxColors = [...boxColors];
-    newBoxColors[index] = selectedColor;
-    setBoxColors(newBoxColors);
-  };
+  const [selectedColor, setSelectedColor] = useState("");
 
   return (
     <div>
       <h1>Handler Prop Demo</h1>
       <ColourSelector colors={colors} onSelectColor={setSelectedColor} />
       <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
-        {boxColors.map((color, index) => (
-          <Selection 
-            key={index} 
-            bgColor={color} 
-            onBoxClick={() => handleBoxClick(index)} 
-          />
+        {[0, 1, 2].map((index) => (
+          <Selection key={index} bgColor={selectedColor} />
         ))}
       </div>
     </div>
