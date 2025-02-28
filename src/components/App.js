@@ -1,54 +1,41 @@
 import React, { useState } from "react";
-import '../styles/App.css';
-import Selection from './Selection';
-import ColourSelector from './ColourSelector';
+import ColourSelector from "./ColourSelector";
+import Selection from "./Selection";
 
-const colourConfig = [{
-    key: 'blue',
-    label: 'Blue',
-    classname: 'btn-blue',
-    background: 'rgb(34, 193, 195)'
-  }, {
-    key: 'orange',
-    label: 'Orange',
-    classname: 'btn-orange',
-    background: 'rgb(221, 112, 18)'
-  }, {
-    key: 'green',
-    label: 'Green',
-    classname: 'btn-green',
-    background: 'rgb(44, 209, 88)'
-  }
-]
-
-const title = 'Select the gradient and then the Box to change the color';
+const colors = [
+  { id: 1, name: "Red", value: "red" },
+  { id: 2, name: "Green", value: "green" },
+  { id: 3, name: "Blue", value: "blue" }
+];
 
 const App = () => {
-  
-  let [nextBackground, selectNextBackground] = useState({ background: "" })
+  const [selectedColor, setSelectedColor] = useState(""); // Holds the currently selected color
+  const [boxColors, setBoxColors] = useState(["", "", ""]); // Holds colors for each box
 
-  const applyColor = (updateSelectionStyle) => {
-    updateSelectionStyle(nextBackground)
-  }
+  // Function to update the color of a specific box
+  const handleBoxClick = (index) => {
+    if (!selectedColor) return; // If no color is selected, do nothing
+
+    const newBoxColors = [...boxColors];
+    newBoxColors[index] = selectedColor;
+    setBoxColors(newBoxColors);
+  };
 
   return (
-    <div id="master">
-      <h5 className="heading">{title}</h5>
-
-      <div className="row">
-        {colourConfig.map((config) => (
-          <ColourSelector key={config.key} config={config} selectNextBackground={selectNextBackground} />
-        ))}
-      </div>
-
-      <div className="row" id="children-wrapper">
-        {["selection1", "selection2", "selection3"].map((key) => (
-          <Selection key={key} applyColor={applyColor} />
+    <div>
+      <h1>Handler Prop Demo</h1>
+      <ColourSelector colors={colors} onSelectColor={setSelectedColor} />
+      <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+        {boxColors.map((color, index) => (
+          <Selection 
+            key={index} 
+            bgColor={color} 
+            onBoxClick={() => handleBoxClick(index)} 
+          />
         ))}
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 export default App;

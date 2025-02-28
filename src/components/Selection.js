@@ -1,13 +1,18 @@
+import React from "react";
 
-import React, { useState } from 'react';
-
-const Selection = ({ applyColor }) => {
-    
-  const [style, setStyle] = useState({ background: "" });
-
+const Selection = ({ bgColor, onBoxClick }) => {
   return (
-    <div className="fix-box" style={style} onClick={() => applyColor(setStyle)}>
-      Click to Change Color
+    <div
+      className="fix-box"
+      onClick={onBoxClick}
+      style={{
+        width: "100px",
+        height: "100px",
+        border: "1px solid black",
+        backgroundColor: bgColor,
+        cursor: "pointer",
+      }}
+    >
     </div>
   );
 };
