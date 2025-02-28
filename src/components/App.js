@@ -3,9 +3,9 @@ import ColourSelector from "./ColourSelector";
 import Selection from "./Selection";
 
 const colors = [
-  { id: 1, name: "Red", value: "red" },
-  { id: 2, name: "Green", value: "green" },
-  { id: 3, name: "Blue", value: "blue" }
+  { id: 1, name: "Blue", value: "blue" },
+  { id: 2, name: "Orange", value: "orange" },
+  { id: 3, name: "Green", value: "green" }
 ];
 
 const App = () => {
