@@ -6,6 +6,7 @@ const ColourSelector = ({ colors, onSelectColor }) => {
       {colors.map((color) => (
         <button
           key={color.id}
+          data-testid={color}
           style={{
             margin: "5px",
             padding: "10px",

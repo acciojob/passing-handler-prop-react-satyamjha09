@@ -4,6 +4,7 @@ const Selection = ({ bgColor, onBoxClick }) => {
   return (
     <div
       className="fix-box"
+      data-testid="selection-box"
       onClick={onBoxClick}
       style={{
         width: "100px",
@@ -13,6 +14,7 @@ const Selection = ({ bgColor, onBoxClick }) => {
         cursor: "pointer",
       }}
     >
+      Selection
     </div>
   );
 };
