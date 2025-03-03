@@ -1,20 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Selection = ({ bgColor, onBoxClick }) => {
+const Selection = ({ selectedColor }) => {
+  const [boxColor, setBoxColor] = useState("");
+
+  useEffect(() => {
+    setBoxColor(selectedColor);
+  }, [selectedColor]);
+
   return (
-    <div
-      className="fix-box"
-      data-testid="selection-box"
-      onClick={onBoxClick}
-      style={{
-        width: "100px",
-        height: "100px",
-        border: "1px solid black",
-        backgroundColor: bgColor,
-        cursor: "pointer",
-      }}
-    >
-      Selection
+    <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+      <div
+        className="fix-box"
+        data-testid="selection-box"
+        style={{
+          width: "100px",
+          height: "100px",
+          backgroundColor: boxColor,
+          border: "1px solid black",
+        }}
+      ></div>
+      <div
+        className="fix-box"
+        data-testid="selection-box"
+        style={{
+          width: "100px",
+          height: "100px",
+          backgroundColor: boxColor,
+          border: "1px solid black",
+        }}
+      ></div>
+      <div
+        className="fix-box"
+        data-testid="selection-box"
+        style={{
+          width: "100px",
+          height: "100px",
+          backgroundColor: boxColor,
+          border: "1px solid black",
+        }}
+      ></div>
     </div>
   );
 };

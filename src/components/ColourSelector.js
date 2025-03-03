@@ -1,23 +1,25 @@
 import React from "react";
 
-const ColourSelector = ({ colors, onSelectColor }) => {
+const ColourSelector = ({ setSelectedColor }) => {
+  const colors = ["blue", "orange", "green"];
+
   return (
     <div>
       {colors.map((color) => (
         <button
-          key={color.id}
-          data-testid={color}
+          key={color}
+          data-testid={color} // Cypress test expects this
+          onClick={() => setSelectedColor(color)}
           style={{
             margin: "5px",
             padding: "10px",
-            backgroundColor: color.value,
+            backgroundColor: color,
             color: "white",
             border: "none",
             cursor: "pointer",
           }}
-          onClick={() => onSelectColor(color.value)}
         >
-          {color.name}
+          {color}
         </button>
       ))}
     </div>
